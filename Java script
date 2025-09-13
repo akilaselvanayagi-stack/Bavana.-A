@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Interactive Examples</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .card h2 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .interactive-demo {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .demo-container {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+        
+        .button:hover {
+            background: #ee5a24;
+        }
+        
+        input, select {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .output {
+            background: #2d2d2d;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+            min-height: 50px;
+        }
+        
+        .code-example {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            border-top: 1px solid #eee;
+            margin-top: 2rem;
+        }
+        
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .theme-button {
+            background: #2d2d2d;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .dark-theme {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+        }
+        
+        .dark-theme .card, .dark-theme .interactive-demo {
+            background: #2d2d2d;
+            color: #f0f0f0;
+        }
+        
+        .dark-theme .button {
+            background: #ff7f7f;
+        }
+        
+        .dark-theme .button:hover {
+            background: #ff6b6b;
+        }
+        
+        .dark-theme input, .dark-theme select {
+            background: #3d3d3d;
+            color: white;
+            border: 1px solid #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="theme-switcher">
+            <button class="theme-button" id="themeToggle">Dark Mode</button>
+        </div>
+        
+        <header>
+            <h1>JavaScript Interactive Examples</h1>
+            <p class="tagline">Learn JavaScript through interactive examples</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="card">
+                <h2>What is JavaScript?</h2>
+                <p>JavaScript is a programming language that enables interactive web pages. It is an essential part of web applications and is supported by all modern web browsers.</p>
+                <p>JavaScript allows you to create dynamically updating content, control multimedia, animate images, and much more.</p>
+            </div>
+            
+            <div class="card">
+                <h2>Why Learn JavaScript?</h2>
+                <p>JavaScript is one of the core technologies of the web and is used by:</p>
+                <ul>
+                    <li>97% of all websites on the client side</li>
+                    <li>Popular frameworks like React, Angular, and Vue</li>
+                    <li>Server-side with Node.js</li>
+                    <li>Mobile app development</li>
+                    <li>Game development</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="interactive-demo">
+            <h2>Interactive Examples</h2>
+            <p>Try these JavaScript examples to see the language in action:</p>
+            
+            <div class="demo-container">
+                <h3>String Manipulation</h3>
+                <p>Enter text and see JavaScript transform it:</p>
+                <input type="text" id="textInput" placeholder="Enter text here" value="Hello JavaScript!">
+                <br>
+                <button class="button" onclick="toUpperCase()">To Upper Case</button>
+                <button class="button" onclick="toLowerCase()">To Lower Case</button>
+                <button class="button" onclick="reverseText()">Reverse Text</button>
+                <div class="output" id="stringOutput">Output will appear here</div>
+            </div>
+            
+            <div class="demo-container">
+                <h3>Calculator</h3>
+                <p>Perform basic calculations with JavaScript:</p>
+                <input type="number" id="num1" placeholder="First number" value="10">
+                <input type="number" id="num2" placeholder="Second number" value="5">
+                <br>
+                <button class="button" onclick="add()">Add</button>
+                <button class="button" onclick="subtract()">Subtract</button>
+                <button class="button" onclick="multiply()">Multiply</button>
+                <button class="button" onclick="divide()">Divide</button>
+                <div class="output" id="calcOutput">Result will appear here</div>
+            </div>
+            
+            <div class="demo-container">
+                <h3>DOM Manipulation</h3>
+                <p>Change the style and content of elements:</p>
+                <button class="button" onclick="changeColor()">Change Color</button>
+                <button class="button" onclick="changeText()">Change Text</button>
+                <button class="button" onclick="toggleVisibility()">Toggle Visibility</button>
+                <div class="output" id="domOutput">This element will be manipulated</div>
+            </div>
+            
+            <div class="demo-container">
+                <h3>Array Operations</h3>
+                <p>Working with arrays in JavaScript:</p>
+                <button class="button" onclick="showArray()">Show Array</button>
+                <button class="button" onclick="sortArray()">Sort Array</button>
+                <button class="button" onclick="filterArray()">Filter Even Numbers</button>
+                <button class="button" onclick="mapArray()">Double Values</button>
+                <div class="output" id="arrayOutput">Array operations result will appear here</div>
+            </div>
+        </div>
+        
+        <div class="interactive-demo">
+            <h2>JavaScript Code Example</h2>
+            <p>Here's a sample JavaScript function that calculates the factorial of a number:</p>
+            
+            <div class="code-example">
+                <pre><code>function factorial(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+// Example usage
+const number = 5;
+console.log(`Factorial of ${number} is ${factorial(number)}`);
+// Output: Factorial of 5 is 120</code></pre>
+            </div>
+            
+            <div class="demo-container">
+                <p>Try it yourself: Calculate the factorial of a number</p>
+                <input type="number" id="factorialInput" placeholder="Enter a number" value="5" min="0" max="20">
+                <button class="button" onclick="calculateFactorial()">Calculate Factorial</button>
+                <div class="output" id="factorialOutput">Result will appear here</div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Created with HTML, CSS, and JavaScript | Example for educational purposes</p>
+            <p>© 2023 JavaScript Interactive Examples</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme switcher functionality
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                themeToggle.textContent = 'Light Mode';
+            } else {
+                themeToggle.textContent = 'Dark Mode';
+            }
+        });
+        
+        // String manipulation functions
+        function toUpperCase() {
+            const input = document.getElementById('textInput').value;
+            document.getElementById('stringOutput').textContent = input.toUpperCase();
+        }
+        
+        function toLowerCase() {
+            const input = document.getElementById('textInput').value;
+            document.getElementById('stringOutput').textContent = input.toLowerCase();
+        }
+        
+        function reverseText() {
+            const input = document.getElementById('textInput').value;
+            document.getElementById('stringOutput').textContent = input.split('').reverse().join('');
+        }
+        
+        // Calculator functions
+        function add() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('calcOutput').textContent = `Result: ${num1 + num2}`;
+        }
+        
+        function subtract() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('calcOutput').textContent = `Result: ${num1 - num2}`;
+        }
+        
+        function multiply() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('calcOutput').textContent = `Result: ${num1 * num2}`;
+        }
+        
+        function divide() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            if (num2 === 0) {
+                document.getElementById('calcOutput').textContent = 'Error: Division by zero';
+            } else {
+                document.getElementById('calcOutput').textContent = `Result: ${num1 / num2}`;
+            }
+        }
+        
+        // DOM manipulation functions
+        function changeColor() {
+            const colors = ['#ff6b6b', '#48dbfb', '#1dd1a1', '#feca57', '#ff9ff3'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('domOutput').style.color = randomColor;
+        }
+        
+        function changeText() {
+            const texts = [
+                'Text changed with JavaScript!',
+                'DOM manipulation is powerful!',
+                'You can change content dynamically!',
+                'JavaScript makes web pages interactive!'
+            ];
+            const randomText = texts[Math.floor(Math.random() * texts.length)];
+            document.getElementById('domOutput').textContent = randomText;
+        }
+        
+        function toggleVisibility() {
+            const output = document.getElementById('domOutput');
+            if (output.style.display === 'none') {
+                output.style.display = 'block';
+            } else {
+                output.style.display = 'none';
+            }
+        }
+        
+        // Array operations
+        const numbers = [7, 3, 9, 2, 5, 1, 8, 4, 6];
+        
+        function showArray() {
+            document.getElementById('arrayOutput').textContent = `Array: [${numbers.join(', ')}]`;
+        }
+        
+        function sortArray() {
+            const sorted = [...numbers].sort((a, b) => a - b);
+            document.getElementById('arrayOutput').textContent = `Sorted: [${sorted.join(', ')}]`;
+        }
+        
+        function filterArray() {
+            const evens = numbers.filter(num => num % 2 === 0);
+            document.getElementById('arrayOutput').textContent = `Even Numbers: [${evens.join(', ')}]`;
+        }
+        
+        function mapArray() {
+            const doubled = numbers.map(num => num * 2);
+            document.getElementById('arrayOutput').textContent = `Doubled: [${doubled.join(', ')}]`;
+        }
+        
+        // Factorial calculation
+        function factorial(n) {
+            if (n === 0 || n === 1) {
+                return 1;
+            }
+            return n * factorial(n - 1);
+        }
+        
+        function calculateFactorial() {
+            const input = parseInt(document.getElementById('factorialInput').value);
+            if (input < 0 || input > 20) {
+                document.getElementById('factorialOutput').textContent = 'Please enter a number between 0 and 20';
+            } else {
+                const result = factorial(input);
+                document.getElementById('factorialOutput').textContent = `Factorial of ${input} is ${result}`;
+            }
+        }
+        
+        // Initialize some outputs on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('stringOutput').textContent = "Output will appear here";
+            document.getElementById('calcOutput').textContent = "Result will appear here";
+            document.getElementById('arrayOutput').textContent = "Array operations result will appear here";
+            document.getElementById('factorialOutput').textContent = "Result will appear here";
+        });
+    </script>
+</body>
+</html>
